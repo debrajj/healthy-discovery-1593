@@ -1,9 +1,9 @@
 // -------------image slide-----------
 let slideIndex = 0;
-const slides = document.getElementsByClassName("slider-image");
+var slides = document.getElementsByClassName("slider-image");
 
 function showSlides() {
-  for (const slide of slides) {
+  for (var slide of slides) {
     slide.style.display = "none";
   }
   slides[slideIndex].style.display = "block";
@@ -11,12 +11,10 @@ function showSlides() {
   if (slideIndex === slides.length) { slideIndex = 0; }
   setTimeout(showSlides, 6000);
 }
-
 document.querySelector(".slider-prev-btn").addEventListener("click", function(){
   slideIndex = (slideIndex + slides.length - 1) % slides.length;
   showSlides();
 });
-
 document.querySelector(".slider-next-btn").addEventListener("click", function(){
   slideIndex = (slideIndex + 1) % slides.length;
   showSlides();
@@ -26,10 +24,10 @@ document.querySelector(".slider-next-btn").addEventListener("click", function(){
 showSlides();
 
 let sIndex = 0;
-const ssl = document.getElementsByClassName("slider-imager");
+var ssl = document.getElementsByClassName("slider-imager");
 
 function showssl() {
-  for (const slide of ssl) {
+  for (var slide of ssl) {
     slide.style.display = "none";
   }
   ssl[sIndex].style.display = "block";
@@ -49,6 +47,41 @@ document.querySelector(".slider-next-btnn").addEventListener("click", function()
 });
 
 showssl();
+
+class FetchData {
+  constructor() {
+    this.url = "https://63c8df92904f040a9651b0ac.mockapi.io/hr";
+    this.firstPdct = document.querySelector(".first-pdct");
+  }
+
+  async getData() {
+    try {
+      var response = await fetch(this.url);
+      var data = await response.json();
+      this.displayData(data);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  displayData(data) {
+    let template = "";
+    data.forEach((item) => {
+      template += `
+        <div class="first-pdct">
+          <h2>${item.name}</h2>
+        <img src="${item.avatar}">
+        </div>
+      `;
+    });
+    this.firstPdct.innerHTML = template;
+  }
+}
+
+var fetchData = new FetchData();
+fetchData.getData();
+
 
 
 
