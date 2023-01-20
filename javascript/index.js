@@ -48,6 +48,8 @@ document.querySelector(".slider-next-btnn").addEventListener("click", function()
 
 showssl();
 
+// ================fatch==============
+
 class FetchData {
   constructor() {
     this.url = "https://63c8df92904f040a9651b0ac.mockapi.io/hr";
