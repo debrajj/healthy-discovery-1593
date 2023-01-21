@@ -1,37 +1,34 @@
-class FetchData {
-    constructor() {
-        this.url = "https://63c8df92904f040a9651b0ac.mockapi.io/hr";
-        this.productContainer = document.querySelector(".product-card");
-    }
+fetch('https://fakestoreapi.com/products')
+  .then((data) => {
+    return data.json();
+  })
+  .then((completedata) => {
+    let data1 = "";
+    console.log(completedata)
+    completedata.sort((a,b) => a.price - b.price);
+    completedata.map((values) => {
+      data1 += `
+        <div id="card">
+       
+          <img src=${values.image} alt="" class="imge">
+          <h1 class="title">${values.title}</h1>
+     
+          <p class="catagory">${values.category}</p>
+          <p class="price">₹ ${values.price}</p>
+          <button id="btnn">Buy Now</button>
+        </div>
+      `
+    });
+    document.getElementById("cards").innerHTML=data1 ;
 
-    async getData() {
-        try {
-            var response = await fetch(this.url);
-            var data = await response.json();
-            this.displayData(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    displayData(data) {
-        let template = "";
-        data.forEach((item) => {
-            template += `
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="${item.avatar}">
-                    
-                        <h5>${item.name}</h5>
-                        <h6>RS${item.price}</h6>
-                        <button>Buy Now</button>
-                    </div>
-                </div>
-            `;
-        });
-        this.productContainer.innerHTML = template;
-    }
-    
-}
-var fetchData = new FetchData();
-fetchData.getData();
 
+  }).catch((err) => {
+    console.log(err)
+  });
+
+document.getElementById("sort").addEventListener("change", function() {
+  if (this.value === "high-low") {
+    completedata.sort((a,b) => b.price - a.price);
+    document.getElementById("cards").innerHTML=data1;
+  }
+});
