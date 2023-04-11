@@ -1,5 +1,5 @@
 ## Reliance Digital Clone
-We have tried to clone this e-commerce website Reliance Digital. We have made this project in the construct week of Unit-3 and used the tech stack js, html, css and json.
+This is a project that aims to clone the Reliance Digital e-commerce website. The project was developed during the Construct Week of Unit-2 and utilizes HTML, JavaScript, CSS, and JSON technologies.
 # Reliance Digital Clone
 
 This is the clone of [reliancedigital](https://reliance-digital.vercel.app/) website.
@@ -17,3 +17,5 @@ It's Individual Projects
 
  - Vs Code
  - Git
+
+The reliance digital clone is not an official website of the Reliance Digital company. It is only a clone made for educational purposes to showcase skills in web development. The website is not intended to be used for commercial or any other purposes.
